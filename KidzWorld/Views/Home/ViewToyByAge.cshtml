@@ -1,0 +1,33 @@
+﻿@model IEnumerable<KidzWorld.Models.Toys>
+
+@{
+    ViewData["Title"] = "View Toys By Age";
+}
+
+<h1>View Toys</h1>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4">
+            <div class="card h-100 border-primary">
+                <img src="~/product_images/@item.ToyID@item.Extension" alt="" style="width:100%">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <p>@Html.DisplayFor(modelItem => item.ToyName)</p>
+
+                    </h4>
+                    <h5>Price  :$ @Html.DisplayFor(modelItem => item.Price)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.ToyDescription)</p>
+                </div>
+                <div class="card-footer">
+                    <p>
+                       <a class="btn btn-primary" asp-action="ViewSeller" asp-route-id="@item.SellerID">View Seller</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

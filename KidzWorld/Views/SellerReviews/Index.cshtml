@@ -1,0 +1,53 @@
+﻿@model IEnumerable<KidzWorld.Models.SellerReview>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Reviews</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewText)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SellersReviews)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReviewDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewText)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SellersReviews.SellerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReviewDate)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.ReviewID">Delete Review</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
